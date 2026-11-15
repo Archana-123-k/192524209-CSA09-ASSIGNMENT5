@@ -1,35 +1,27 @@
-# CSA09 Assignment 5 – Java Data Persistence Solutions
+# CSA09-192452250-Assignment 5
 
-This project contains working Java programs for the two code-complete tasks from the assignment:
+This repository follows the assignment structure shown in the reference layout:
 
-- PassStore.java – file-based bus pass lookup with damaged-line skipping
-- PassLoader.java – JDBC batch insert in a single transaction
+- PartA
+  - A1
+  - A2
+  - A3
+  - A4
+  - A5
+- PartB
+  - B1
+  - B2
+  - B3
+  - B4
+
+## Included files
+- README.md
+- report.md
+- db.properties.example
+- .gitignore
 
 ## Java version
-
-Tested with Java 17+
-
-## Compile
-
-```bash
-javac PassStore.java PassLoader.java
-```
-
-## Run the file-store demonstration
-
-```bash
-java PassStore
-```
-
-Expected output:
-
-```text
-[P1003, 192311003, Divya, 7, 3800.0]
-null
-```
+- Java 17+
 
 ## Notes
-
-- PassStore deliberately ignores malformed lines that do not contain exactly five comma-separated fields.
-- PassLoader wraps every insert in a transaction and batches rows in groups of 1000.
-- A rollback is issued if any record in the batch is invalid or the database operation fails.
+This repository is organized task-wise to match the course requirement for reporting, implementation, and evidence collection.

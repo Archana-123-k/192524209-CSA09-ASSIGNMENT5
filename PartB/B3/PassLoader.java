@@ -1,15 +1,12 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 public class PassLoader {
-    /** Loads all passes in one transaction, in batches of 1,000 rows.
-     * Returns the number of rows loaded. */
-    public static int loadAll(Connection con, List<String[]> passes)
-            throws SQLException {
-        String sql = "INSERT INTO bus_pass(pass_id, reg_no, name, route_no, amount) "
-                + "VALUES (?, ?, ?, ?, ?)";
+    public static int loadAll(Connection con, List<String[]> passes) throws SQLException {
+        String sql = "INSERT INTO bus_pass(pass_id, reg_no, name, route_no, amount) VALUES (?, ?, ?, ?, ?)";
         boolean oldAutoCommit = con.getAutoCommit();
         con.setAutoCommit(false);
         int totalRows = 0;
@@ -17,7 +14,7 @@ public class PassLoader {
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             for (String[] p : passes) {
                 if (p == null || p.length != 5) {
-                    throw new SQLException("Invalid pass row: " + java.util.Arrays.toString(p));
+                    throw new SQLException("Invalid pass row: " + Arrays.toString(p));
                 }
 
                 ps.setString(1, p[0]);
